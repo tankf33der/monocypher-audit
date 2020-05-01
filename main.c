@@ -113,6 +113,23 @@ void xchacha(void) {
     crypto_xchacha20(out, in, 32, key, nonce);
 }
 
+void ietf_chacha(void) {
+    ARRAY(out,   32);
+    ARRAY(in,    32);
+    ARRAY(key,   32);
+    ARRAY(nonce, 12);
+    crypto_ietf_chacha20(out, in, 32, key, nonce);
+}
+
+void chacha_ctr(void) {
+    ARRAY(out,   32);
+    ARRAY(in,    32);
+    ARRAY(key,   32);
+    ARRAY(nonce, 8);
+    crypto_chacha20_ctr(out, in, 32, key, nonce, 7000);
+}
+
+
 int main(void) {
     p1305();
     blake2b();
@@ -127,5 +144,7 @@ int main(void) {
     hchacha();
     chacha();
     xchacha();
+    ietf_chacha();
+    chacha_ctr();
     return 0;
 }
