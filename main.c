@@ -145,6 +145,15 @@ void ietf_chacha_ctr(void) {
     crypto_ietf_chacha20_ctr(out, in, 32, key, nonce, 7000);
 }
 
+void x25519(void) {
+    ARRAY(key, 32);
+    ARRAY(pub, 32);
+    ARRAY(shr, 32);
+    key[0] = 0;
+    crypto_x25519_public_key(pub, key);
+    crypto_x25519(shr, key, pub);
+}
+
 int main(void) {
     p1305();
     blake2b();
@@ -163,5 +172,6 @@ int main(void) {
     chacha_ctr();
     xchacha_ctr();
     ietf_chacha_ctr();
+    x25519();
     return 0;
 }
