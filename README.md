@@ -20,3 +20,8 @@ frama-c -eva -eva-precision 11 -eva-builtins-auto -memexec-all -no-val-show-prog
 ```
 $ e-acsl-gcc.sh -c -msegment,bittree *.c
 ```
+
+
+```
+TODO: add optional and pass --rte=all via e-acsl-gcc.sh
+```
