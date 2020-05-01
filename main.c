@@ -18,12 +18,15 @@ void p1305(void) {
 }
 
 void blake2b(void) {
-    ARRAY(hash, 64);
-    ARRAY(key,  64);
-    ARRAY(in,  132);
-    for(size_t h = 1; h < 64; h++) {
-        for(size_t k = 0; k < 64; k++) {
-            crypto_blake2b_general(hash, h, key, k, in, 1);
+    // XXX increase if you have more RAM
+    ARRAY(hash, 16);
+    ARRAY(key,  16);
+    ARRAY(in,   16);
+    for(size_t h = 1; h < sizeof(hash); h++) {
+        for(size_t k = 0; k < sizeof(key); k++) {
+            for(size_t i = 0; i < sizeof(in); i++) {
+                crypto_blake2b_general(hash, h, key, k, in, i);
+            }
         }
     }
 }
