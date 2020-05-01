@@ -16,3 +16,7 @@ frama-c -eva -eva-precision 11 -eva-builtins-auto -memexec-all -no-val-show-prog
 frama-c -eva -eva-precision 11 -eva-builtins-auto -memexec-all -no-val-show-progress -main argon *.c
 frama-c -eva -eva-precision 11 -eva-builtins-auto -memexec-all -no-val-show-progress -main sign_check *.c
 ```
+
+```
+$ e-acsl-gcc.sh -c -msegment,bittree *.c
+```
