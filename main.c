@@ -71,6 +71,15 @@ void sign_check(void) {
     crypto_check(hash, pub, in, 32);
 }
 
+void from_eddsa(void) {
+    ARRAY(shr, 32);
+    ARRAY(key, 32);
+    ARRAY(pub, 32);
+    crypto_from_eddsa_private(shr, key);
+    crypto_sign_public_key(pub, key);
+    crypto_from_eddsa_public(shr, pub);
+}
+
 int main(void) {
     p1305();
     blake2b();
@@ -80,5 +89,6 @@ int main(void) {
     argon();
     key_exchange();
     sign_check();
+    from_eddsa();
     return 0;
 }
