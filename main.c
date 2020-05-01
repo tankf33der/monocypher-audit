@@ -19,9 +19,9 @@ void p1305(void) {
 
 void blake2b(void) {
     // XXX increase if you have more RAM
-    ARRAY(hash, 16);
-    ARRAY(key,  16);
-    ARRAY(in,   16);
+    ARRAY(hash, 16); // 1..64
+    ARRAY(key,  16); // 0..64
+    ARRAY(in,   16); // 0..129
     for(size_t h = 1; h < sizeof(hash); h++) {
         for(size_t k = 0; k < sizeof(key); k++) {
             for(size_t i = 0; i < sizeof(in); i++) {
