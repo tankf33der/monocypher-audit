@@ -154,6 +154,21 @@ void x25519(void) {
     crypto_x25519(shr, key, pub);
 }
 
+void dirty(void) {
+    ARRAY(key, 32);
+    ARRAY(pub, 32);
+    crypto_x25519_dirty_small(pub, key);
+    crypto_x25519_dirty_fast (pub, key);
+}
+
+void inverse(void) {
+    ARRAY(key, 32);
+    ARRAY(pub, 32);
+    ARRAY(bld, 32);
+    crypto_x25519_public_key(pub, key);
+    crypto_x25519_inverse(bld, key, pub);
+}
+
 int main(void) {
     p1305();
     blake2b();
@@ -173,5 +188,7 @@ int main(void) {
     xchacha_ctr();
     ietf_chacha_ctr();
     x25519();
+    dirty();
+    inverse();
     return 0;
 }
