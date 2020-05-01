@@ -61,6 +61,16 @@ void key_exchange(void) {
     crypto_key_exchange(shd, key, key);
 }
 
+void sign_check(void) {
+    ARRAY(hash, 64);
+    ARRAY(key,  32);
+    ARRAY(pub,  32);
+    ARRAY(in,   32);
+    crypto_sign_public_key(pub, key);
+    crypto_sign(hash, key, pub, in, 32);
+    crypto_check(hash, pub, in, 32);
+}
+
 int main(void) {
     p1305();
     blake2b();
@@ -69,5 +79,6 @@ int main(void) {
     lock_unlock();
     argon();
     key_exchange();
+    sign_check();
     return 0;
 }
