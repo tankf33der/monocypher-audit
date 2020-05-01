@@ -80,6 +80,16 @@ void from_eddsa(void) {
     crypto_from_eddsa_public(shr, pub);
 }
 
+void hidden(void) {
+    ARRAY(key, 32);
+    ARRAY(pub, 32);
+    ARRAY(hdn, 32);
+    crypto_x25519_public_key(pub, key);
+    crypto_curve_to_hidden(hdn, pub, 77);
+    crypto_hidden_to_curve(pub, hdn);
+    crypto_hidden_key_pair(hdn, key, pub);
+}
+
 int main(void) {
     p1305();
     blake2b();
@@ -90,5 +100,6 @@ int main(void) {
     key_exchange();
     sign_check();
     from_eddsa();
+    hidden();
     return 0;
 }
