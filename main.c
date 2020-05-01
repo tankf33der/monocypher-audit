@@ -45,11 +45,22 @@ void lock_unlock(void) {
     crypto_unlock(txt, key, nonce, mac, enc, 64);
 }
 
+void argon(void) {
+    ARRAY(hash, 32);
+    ARRAY(wrk, 1048576); // 1024 * 1024
+    ARRAY(pwd, 32);
+    ARRAY(key, 32);
+    ARRAY(slt, 32);
+    ARRAY(ad,  32);
+    crypto_argon2i_general(hash, 32, wrk, 1024, 3, pwd, 32, slt, 32, key, 32, ad, 32);
+}
+
 int main(void) {
     p1305();
     blake2b();
     verify();
     wipe();
     lock_unlock();
+    argon();
     return 0;
 }

@@ -12,5 +12,6 @@ frama-c -eva -eva-precision 11 -eva-builtins-auto -memexec-all -no-val-show-prog
 frama-c -eva -eva-precision 11 -eva-builtins-auto -memexec-all -no-val-show-progress -main blake2b *.c
 frama-c -eva -eva-precision 11 -eva-builtins-auto -memexec-all -no-val-show-progress -main verify *.c
 frama-c -eva -eva-precision 11 -eva-builtins-auto -memexec-all -no-val-show-progress -main wipe *.c
-frama-c -eva -eva-precision 11 -eva-builtins-auto -memexec-all -no-val-show-progress -main lock-unlock *.c
+frama-c -eva -eva-precision 11 -eva-builtins-auto -memexec-all -no-val-show-progress -main lock_unlock *.c
+frama-c -eva -eva-precision 11 -eva-builtins-auto -memexec-all -no-val-show-progress -main argon *.c
 ```
