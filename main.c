@@ -90,6 +90,21 @@ void hidden(void) {
     crypto_hidden_key_pair(hdn, key, pub);
 }
 
+void hchacha(void) {
+    ARRAY(out, 32);
+    ARRAY(key, 32);
+    ARRAY(in,  16);
+    crypto_hchacha20(out, key, in);
+}
+
+void chacha(void) {
+    ARRAY(out,   32);
+    ARRAY(in,    32);
+    ARRAY(key,   32);
+    ARRAY(nonce, 8);
+    crypto_chacha20(out, in, 32, key, nonce);
+}
+
 int main(void) {
     p1305();
     blake2b();
@@ -101,5 +116,7 @@ int main(void) {
     sign_check();
     from_eddsa();
     hidden();
+    hchacha();
+    chacha();
     return 0;
 }
