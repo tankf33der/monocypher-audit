@@ -105,6 +105,14 @@ void chacha(void) {
     crypto_chacha20(out, in, 32, key, nonce);
 }
 
+void xchacha(void) {
+    ARRAY(out,   32);
+    ARRAY(in,    32);
+    ARRAY(key,   32);
+    ARRAY(nonce, 24);
+    crypto_xchacha20(out, in, 32, key, nonce);
+}
+
 int main(void) {
     p1305();
     blake2b();
@@ -118,5 +126,6 @@ int main(void) {
     hidden();
     hchacha();
     chacha();
+    xchacha();
     return 0;
 }
