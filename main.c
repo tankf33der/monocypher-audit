@@ -55,6 +55,12 @@ void argon(void) {
     crypto_argon2i_general(hash, 16, wrk, 1024, 3, pwd, 16, slt, 16, key, 16, ad, 16);
 }
 
+void key_exchange(void) {
+    ARRAY(shd, 32);
+    ARRAY(key, 32);
+    crypto_key_exchange(shd, key, key);
+}
+
 int main(void) {
     p1305();
     blake2b();
@@ -62,5 +68,6 @@ int main(void) {
     wipe();
     lock_unlock();
     argon();
+    key_exchange();
     return 0;
 }
