@@ -1,10 +1,11 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-int audit_poly1305(void) {
-    
+void p1305(void) {
+
 }
 
 int main(void) {
+    p1305();
     return 0;
 }
