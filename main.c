@@ -1,6 +1,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include "monocypher.h"
+#include "monocypher-ed25519.h"
 
 typedef uint8_t u8;
 
@@ -169,6 +170,12 @@ void inverse(void) {
     crypto_x25519_inverse(bld, key, pub);
 }
 
+void sha512(void) {
+    ARRAY(hash, 64);
+    ARRAY(in  , 64);
+    crypto_sha512(hash, in, 64);
+}
+
 int main(void) {
     p1305();
     blake2b();
@@ -190,5 +197,6 @@ int main(void) {
     x25519();
     dirty();
     inverse();
+    sha512();
     return 0;
 }
