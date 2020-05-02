@@ -176,6 +176,24 @@ void sha512(void) {
     crypto_sha512(hash, in, 64);
 }
 
+void hmac(void) {
+    ARRAY(hash, 64);
+    ARRAY(key , 64);
+    ARRAY(in  , 64);
+    crypto_hmac_sha512(hash, key, 64, in, 64);
+}
+
+void sign_check_ed25519(void) {
+    ARRAY(hash, 64);
+    ARRAY(key,  32);
+    ARRAY(pub,  32);
+    ARRAY(in,   32);
+    crypto_ed25519_public_key(pub, key);
+    crypto_ed25519_sign(hash, key, pub, in, 32);
+    crypto_ed25519_check(hash, pub, in, 32);
+}
+
+
 int main(void) {
     p1305();
     blake2b();
@@ -198,5 +216,7 @@ int main(void) {
     dirty();
     inverse();
     sha512();
+    hmac();
+    sign_check_ed25519();
     return 0;
 }
